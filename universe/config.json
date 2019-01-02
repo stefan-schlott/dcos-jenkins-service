@@ -6,9 +6,10 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "description": "The name of the service to display in the DC/OS dashboard.",
-                    "type": "string",
-                    "default": "jenkins"
+                  "description": "Unique name for the service instance consisting of a series of words separated by slashes. Each word must be at least 1 alphanumeric character and may only contain digits (`0-9`), dashes (`-`), dots (`.`), and lowercase letters (`a-z`). The word may not begin or end with a dash",
+                  "type": "string",
+                  "pattern": "^(\\/?((\\.\\.)|(([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])\\.)*([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9]))?($|\\/))+$",
+                  "default": "jenkins"
                 },
                 "cpus": {
                     "description": "CPU shares to allocate to each Jenkins master.",
