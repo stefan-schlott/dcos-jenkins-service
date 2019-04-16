@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.150.1
+FROM jenkins/jenkins:2.160
 WORKDIR /tmp
 
 # Environment variables used throughout this Dockerfile
@@ -65,7 +65,7 @@ RUN sed -i "s/\${BLUEOCEAN_VERSION}/${BLUEOCEAN_VERSION}/g" /tmp/plugins.conf
 RUN /usr/local/bin/install-plugins.sh < /tmp/plugins.conf
 
 # add mesos plugin
-ADD https://infinity-artifacts.s3.amazonaws.com/mesos-jenkins/mesos.hpi-${MESOS_PLUG_HASH} "${JENKINS_STAGING}/plugins/mesos.hpi"
+ADD mesos.hpi "${JENKINS_STAGING}/plugins/mesos.hpi"
 ADD https://infinity-artifacts.s3.amazonaws.com/prometheus-jenkins/prometheus.hpi-${PROMETHEUS_PLUG_HASH} "${JENKINS_STAGING}/plugins/prometheus.hpi"
 ADD https://infinity-artifacts.s3.amazonaws.com/statsd-jenkins/metrics-graphite.hpi-${STATSD_PLUG_HASH} "${JENKINS_STAGING}/plugins/metrics-graphite.hpi"
 
