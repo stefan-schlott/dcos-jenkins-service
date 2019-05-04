@@ -162,8 +162,8 @@ def test_scaling_load(master_count,
     # create service accounts in parallel
     sdk_security.install_enterprise_cli()
 
-    if mom:
-        _configure_admin_router(mom, SHARED_ROLE)
+    # if mom:
+    #     _configure_admin_router(mom, SHARED_ROLE)
 
     current = 0
     end = max_index - min_index
