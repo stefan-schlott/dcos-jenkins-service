@@ -135,8 +135,13 @@ cat >$DIR/jenkins-pool-configuration.json <<EOF
         "protocol": "HTTP",
         "services": [
           {
-            "frameworkName": "mom-4",
-            "taskName": "jenkins1"
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskName": "jenkins1"
+            },
+            "endpoint": {
+              "portName": "jenkins"
+            }
           }
         ]
       },
@@ -145,8 +150,13 @@ cat >$DIR/jenkins-pool-configuration.json <<EOF
         "protocol": "HTTP",
         "services": [
           {
-            "frameworkName": "mom-4",
-            "taskName": "jenkins2"
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskName": "jenkins2"
+            },
+            "endpoint": {
+              "portName": "jenkins"
+            }
           }
         ]
       }
