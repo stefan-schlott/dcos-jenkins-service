@@ -111,25 +111,46 @@ cat >$DIR/jenkins-pool-configuration.json <<EOF
   "name": "jenkins-pool",
   "count": 1,
   "haproxy": {
-    "frontends": [{
-      "bindPort": 80,
-      "protocol": "HTTP",
-      "linkBackend": {
-        "defaultBackend": "jenkins-0-backend"
-      }
-    }],
-    "backends": [{
-      "name": "jenkins-0-backend",
-      "protocol": "HTTP",
-      "services": [{
-        "marathon": {
-          "serviceID": "/jenkins0"
-        },
-        "endpoint": {
-          "portName": "jenkins"
+    "frontends": [
+      {
+        "bindPort": 80,
+        "protocol": "HTTP",
+        "linkBackend": {
+          "map": [
+            {
+              "pathBeg": "/jenkins1",
+              "backend": "backend-jenkins1"
+            },
+            {
+              "pathBeg": "/jenkins2",
+              "backend": "backend-jenkins2"
+            }
+          ]
         }
-      }]
-    }]
+      }
+    ],
+    "backends": [
+      {
+        "name": "backend-jenkins1",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "frameworkName": "mom-4",
+            "taskName": "jenkins1"
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins2",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "frameworkName": "mom-4",
+            "taskName": "jenkins2"
+          }
+        ]
+      }
+    ]
   }
 }
 EOF
