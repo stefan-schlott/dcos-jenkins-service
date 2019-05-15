@@ -119,17 +119,33 @@ cat >$DIR/jenkins-pool-configuration.json <<EOF
           "map": [
             {
               "pathBeg": "/jenkins1",
-              "backend": "backend-jenkins1"
+              "backend": "backend-jenkins0"
             },
             {
               "pathBeg": "/jenkins2",
-              "backend": "backend-jenkins2"
+              "backend": "backend-jenkins1"
             }
           ]
         }
       }
     ],
     "backends": [
+      {
+        "name": "backend-jenkins0",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskName": "jenkins0"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      },
       {
         "name": "backend-jenkins1",
         "protocol": "HTTP",
@@ -140,22 +156,8 @@ cat >$DIR/jenkins-pool-configuration.json <<EOF
               "taskName": "jenkins1"
             },
             "endpoint": {
-              "portName": "jenkins"
-            }
-          }
-        ]
-      },
-      {
-        "name": "backend-jenkins2",
-        "protocol": "HTTP",
-        "services": [
-          {
-            "mesos": {
-              "frameworkName": "mom-4",
-              "taskName": "jenkins2"
-            },
-            "endpoint": {
-              "portName": "jenkins"
+              "portName": "nginx",
+              "type": "AGENT_IP"
             }
           }
         ]
