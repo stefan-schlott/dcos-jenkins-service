@@ -176,8 +176,191 @@ EOF
 	dcos edgelb endpoints jenkins-pool
 }
 
-install_mom
-configure_jenkins
-install_edgelb
-install_edgelb_jenkins_pools
+install_edgelb_simplehttp_pools()
+{
+    dcos package repo add --index=0 edgelb-pool  "${EDGELB_POOL_STUB_URL}"
 
+cat >$DIR/simple-http-configuration.json <<EOF
+{
+  "apiVersion": "V2",
+  "name": "simple-http-pool",
+  "count": 1,
+  "haproxy": {
+    "frontends": [
+      {
+        "bindPort": 80,
+        "protocol": "HTTP",
+        "linkBackend": {
+          "defaultBackend": "backend-simple0"
+        }
+      }
+    ],
+    "backends": [
+      {
+        "name": "backend-simple0",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "marathon": {
+              "serviceID": "/simple-http"
+            },
+            "endpoint": {
+              "portName": "netcat"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+EOF
+
+	dcos security org users grant edge-lb-principal dcos:adminrouter:service:dcos-edgelb/pools/simple-http-pool full
+
+	# Create jenkins pool	
+	dcos edgelb create $DIR/simple-http-configuration.json
+	
+	# Verify
+	dcos edgelb endpoints simple-http-pool
+}
+
+install_edgelb_mixed_pools()
+{
+    dcos package repo add --index=0 edgelb-pool  "${EDGELB_POOL_STUB_URL}"
+
+cat >$DIR/mixed-http-configuration.json <<EOF
+{
+  "apiVersion": "V2",
+  "name": "mixed-http-pool",
+  "count": 1,
+  "haproxy": {
+    "frontends": [
+      {
+        "bindPort": 80,
+        "protocol": "HTTP",
+        "linkBackend": {
+          "map": [
+            {
+              "pathBeg": "/simple-http",
+              "backend": "backend-simple0"
+            },
+            {
+              "pathBeg": "/service/jenkins0",
+              "backend": "backend-jenkins0"
+            },
+            {
+              "pathBeg": "/service/jenkins1",
+              "backend": "backend-jenkins1"
+            },
+            {
+              "pathBeg": "/service/jenkins2",
+              "backend": "backend-jenkins2"
+            },
+            {
+              "pathBeg": "/service/jenkins3",
+              "backend": "backend-jenkins3"
+            }
+          ]
+        }
+      }
+    ],
+    "backends": [
+      {
+        "name": "backend-simple0",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "marathon": {
+              "serviceID": "/simple-http"
+            },
+            "endpoint": {
+              "portName": "netcat"
+            }
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins0",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskNamePattern": "jenkins0.*$"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins1",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskNamePattern": "jenkins1.*$"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins2",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskNamePattern": "jenkins2.*$"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins3",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskNamePattern": "jenkins3.*$"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+EOF
+
+	dcos security org users grant edge-lb-principal dcos:adminrouter:service:dcos-edgelb/pools/mixed-http-pool full
+
+	# Create jenkins pool	
+	dcos edgelb create $DIR/mixed-http-configuration.json
+	
+	# Verify
+	dcos edgelb endpoints mixed-http-pool
+}
+
+
+#install_mom
+#configure_jenkins
+#install_edgelb
+#install_edgelb_simplehttp_pools
+#install_edgelb_jenkins_pools
+install_edgelb_mixed_pools

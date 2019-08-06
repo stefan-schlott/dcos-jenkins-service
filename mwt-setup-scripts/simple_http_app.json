@@ -1,0 +1,29 @@
+{
+  "id": "/simple-http",
+  "cmd": " while true; do (echo -e 'HTTP/1.1 200 OK\\r\\n'; echo -e \"\\n\\tMy website has date function\" ; echo -e \"\\t$(date)\\n\") | nc -l -p $PORT_NETCAT; done",
+  "cpus": 0.1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "container": {
+    "type": "MESOS",
+    "docker": {
+      "forcePullImage": false,
+      "image": "alpine",
+      "parameters": [],
+      "privileged": false
+    },
+    "volumes": []
+  },
+  "portDefinitions": [
+    {
+      "port": 10004,
+      "name": "netcat",
+      "protocol": "tcp"
+    }
+  ],
+  "maxLaunchDelaySeconds": 300
+}

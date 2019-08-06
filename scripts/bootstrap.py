@@ -61,7 +61,7 @@ def populate_jenkins_location_config(location_xml, url):
     tree.write(location_xml)
 
 
-def populate_nginx_config(config_file, nginx_port, jenkins_port, context):
+def populate_nginx_config(config_file, nginx_port, jenkins_port, jenkins_edgelb_context, context):
     """Modifies an nginx config, replacing the "magic" strings
     '_XNGINX_PORT', '_XJENKINS_PORT' and '_XJENKINS_CONTEXT' with the real
     value provided.
@@ -69,6 +69,7 @@ def populate_nginx_config(config_file, nginx_port, jenkins_port, context):
     :param config_file: the path to an 'nginx.conf'
     :param nginx_port: the Mesos port the task is running on
     :param jenkins_port: the Mesos port the task is running on
+    :param jenkins_edgelb_context: path taken by edgelb, e.g. '/service/jenkins/jenkins'
     :param context: the application's context, e.g. '/service/jenkins'
     """
     original = None
@@ -83,6 +84,8 @@ def populate_nginx_config(config_file, nginx_port, jenkins_port, context):
                 f.write(re.sub('_XJENKINS_PORT', jenkins_port, line))
             elif re.match(r'.*_XJENKINS_CONTEXT.*', line):
                 f.write(re.sub('_XJENKINS_CONTEXT', context, line))
+            elif re.match(r'.*_XJENKINS_EDGELB_CONTEXT.*', line):
+                f.write(re.sub('_XJENKINS_EDGELB_CONTEXT', jenkins_edgelb_context, line))
             else:
                 f.write(line)
 
@@ -110,13 +113,14 @@ def main():
         jenkins_agent_role = os.environ['JENKINS_AGENT_ROLE']
         jenkins_home_dir = os.environ['JENKINS_HOME']
         jenkins_framework_name = os.environ['JENKINS_FRAMEWORK_NAME']
-        jenkins_app_context = os.environ['JENKINS_FRAMEWORK_NAME']
+        jenkins_app_context = os.environ['JENKINS_CONTEXT']
         marathon_host = os.environ['HOST']
         marathon_nginx_port = os.environ['PORT0']
         marathon_jenkins_port = os.environ['PORT1']
         mesos_master = os.environ['JENKINS_MESOS_MASTER']
         ssh_known_hosts = os.environ['SSH_KNOWN_HOSTS']
         marathon_name = os.environ['MARATHON_NAME']
+        jenkins_edgelb_context = os.environ['JENKINS_EDGELB_CONTEXT']
     except KeyError as e:
         # Since each of the environment variables above are set either in the
         # DCOS marathon.json or by Marathon itself, the user should never get
@@ -152,6 +156,7 @@ def main():
         '/var/nginx/nginx.conf',
         marathon_nginx_port,
         marathon_jenkins_port,
+        jenkins_edgelb_context,
         jenkins_app_context)
 
 

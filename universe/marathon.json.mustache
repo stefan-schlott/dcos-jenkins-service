@@ -21,6 +21,7 @@
         "MESOS_HTTP_AUTHENTICATEE": "com_mesosphere_dcos_http_Authenticatee",
       {{/security.secret-name}}
       "JENKINS_CONTEXT": "/service/{{service.name}}",
+      "JENKINS_EDGELB_CONTEXT": "/service/{{service.name}}/{{service.name}}",
       "JENKINS_MESOS_MASTER": "{{advanced.mesos-master}}",
       {{#networking.virtual-host}}
       "JENKINS_ROOT_URL": "{{#networking.https-redirect}}https://{{/networking.https-redirect}}{{^networking.https-redirect}}http://{{/networking.https-redirect}}{{networking.virtual-host}}/service/{{service.name}}",
@@ -42,7 +43,8 @@
   "container": {
         "type": "MESOS",
         "docker": {
-          "image": "{{resource.assets.container.docker.jenkins}}"
+          "image": "{{resource.assets.container.docker.jenkins}}",
+          "forcePullImage": true
         },
         "volumes": [
           {{#storage.host-volume}}
