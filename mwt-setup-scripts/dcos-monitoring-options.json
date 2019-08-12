@@ -1,0 +1,6 @@
+{
+  "service": {
+    "service_account": "dcos-monitoring-principal",
+    "service_account_secret": "dcos-monitoring/service-private-key"
+  }
+}

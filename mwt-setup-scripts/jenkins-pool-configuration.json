@@ -1,0 +1,59 @@
+{
+  "apiVersion": "V2",
+  "name": "jenkins-pool",
+  "count": 1,
+  "haproxy": {
+    "frontends": [
+      {
+        "bindPort": 80,
+        "protocol": "HTTP",
+        "linkBackend": {
+          "map": [
+            {
+              "pathBeg": "/jenkins1",
+              "backend": "backend-jenkins0"
+            },
+            {
+              "pathBeg": "/jenkins2",
+              "backend": "backend-jenkins1"
+            }
+          ]
+        }
+      }
+    ],
+    "backends": [
+      {
+        "name": "backend-jenkins0",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskName": "jenkins0"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      },
+      {
+        "name": "backend-jenkins1",
+        "protocol": "HTTP",
+        "services": [
+          {
+            "mesos": {
+              "frameworkName": "mom-4",
+              "taskName": "jenkins1"
+            },
+            "endpoint": {
+              "portName": "nginx",
+              "type": "AGENT_IP"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
