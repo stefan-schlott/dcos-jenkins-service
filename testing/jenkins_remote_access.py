@@ -20,7 +20,7 @@ import com.cloudbees.hudson.plugins.folder.Folder;
 
 DOCKER_CONTAINER = """
 def containerInfo = new MesosSlaveInfo.ContainerInfo(
-                "MESOS",
+                "DOCKER",
                 "$dockerImage",
                 true,
                 false,

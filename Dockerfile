@@ -13,13 +13,7 @@ ENV JENKINS_FOLDER /usr/share/jenkins
 ARG LIBMESOS_DOWNLOAD_URL=https://downloads.mesosphere.io/libmesos-bundle/libmesos-bundle-1.12.0.tar.gz
 ARG BLUEOCEAN_VERSION=1.9.0
 ARG JENKINS_STAGING=/usr/share/jenkins/ref/
-# ARG MESOS_PLUG_HASH=347c1ac133dc0cb6282a0dde820acd5b4eb21133 #Stable 2.150.1
-# ARG MESOS_PLUG_HASH=31fdea5dcd0c8c5fc37336ee24beac0d92adcb247edb5f146bcee69193c793dc # Broken.
-#ARG MESOS_PLUG_HASH=a0674c01bf7f81d95e1eda5fb5ad3de1e2cebb52 #Upstream version.
-#ARG MESOS_PLUG_HASH=9c61b9d3aba63c2df85a2a6d497a3d36b61b8f73 #Broken
-#ARG MESOS_PLUG_HASH=dd0e90886a07e81d79d7a5e06f26607352f0b4ac #Overlay error.
-#ARG MESOS_PLUG_HASH=bd6d505ea2939dae20fa3f981dfacbb676b6c31f
-ARG MESOS_PLUG_HASH=b4df63aad52a4c2b518a7108d493628c827c3554
+ARG MESOS_PLUG_HASH=347c1ac133dc0cb6282a0dde820acd5b4eb21133
 ARG PROMETHEUS_PLUG_HASH=a347bf2c63efe59134c15b8ef83a4a1f627e3b5d
 ARG STATSD_PLUG_HASH=929d4a6cb3d3ce5f1e03af73075b13687d4879c8
 ARG JENKINS_DCOS_HOME=/var/jenkinsdcos_home
@@ -71,8 +65,7 @@ RUN sed -i "s/\${BLUEOCEAN_VERSION}/${BLUEOCEAN_VERSION}/g" /tmp/plugins.conf
 RUN /usr/local/bin/install-plugins.sh < /tmp/plugins.conf
 
 # add mesos plugin
-#ADD https://infinity-artifacts.s3.amazonaws.com/mesos-jenkins/mesos.hpi-${MESOS_PLUG_HASH} "${JENKINS_STAGING}/plugins/mesos.hpi"
-ADD https://kjoshi-dev.s3.amazonaws.com/mesos.hpi-${MESOS_PLUG_HASH} "${JENKINS_STAGING}/plugins/mesos.hpi"
+ADD https://infinity-artifacts.s3.amazonaws.com/mesos-jenkins/mesos.hpi-${MESOS_PLUG_HASH} "${JENKINS_STAGING}/plugins/mesos.hpi"
 ADD https://infinity-artifacts.s3.amazonaws.com/prometheus-jenkins/prometheus.hpi-${PROMETHEUS_PLUG_HASH} "${JENKINS_STAGING}/plugins/prometheus.hpi"
 ADD https://infinity-artifacts.s3.amazonaws.com/statsd-jenkins/metrics-graphite.hpi-${STATSD_PLUG_HASH} "${JENKINS_STAGING}/plugins/metrics-graphite.hpi"
 
