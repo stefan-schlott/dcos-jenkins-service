@@ -61,7 +61,7 @@ SERVICE_ACCOUNT_TIMEOUT = 15 * 60  # 15 mins
 
 LOCK = Lock()
 
-TIMINGS = {"deployments": {}, "serviceaccounts": {}}
+TIMINGS = {"deployments": {}, "serviceaccounts": {}, "createjobs": {}}
 ACCOUNTS = {}
 
 
@@ -121,7 +121,10 @@ def _create_service_accounts_stage(
 
         batched_masters = masters[current : current + batch_size]
         service_account_threads = _spawn_threads(
-            batched_masters, _create_service_accounts, security=security_mode
+            batched_masters,
+            _create_service_accounts,
+            security=security_mode,
+            event="serviceaccounts",
         )
         thread_failures = _wait_and_get_failures(
             service_account_threads, timeout=SERVICE_ACCOUNT_TIMEOUT
@@ -212,6 +215,7 @@ def _create_jobs_stage(
             delay=run_delay,
             duration=work_duration,
             scenario=scenario,
+            event="createjobs",
         )
         thread_failures = _wait_and_get_failures(job_threads, timeout=JOB_RUN_TIMEOUT)
         failure_set.add(thread_failures)
@@ -310,6 +314,29 @@ def test_scaling_load(
         work_duration,
         scenario,
     )
+
+    successful_deployments = [x for x in masters if x not in job_creation_failures]
+
+    log.info("\n\nAll masters to deploy: [{}]\n\n".format(",".join(masters)))
+    log.info(
+        "\n\n Service account failures: [{}]\n\n".format(
+            service_account_creation_failures
+        )
+    )
+
+    log.info(
+        "\n\nJenkins framework creation failures: [{}]\n\n".format(
+            install_jenkins_failures
+        )
+    )
+
+    log.info(
+        "\n\nJenkins job creation failures: [{}]\n\n".format(job_creation_failures)
+    )
+    log.info(
+        "\n\nSuccessful Jenkins deployments: [{}]\n\n".format(successful_deployments)
+    )
+    log.info("Timings: {}".format(json.dumps(TIMINGS)))
 
 
 @pytest.mark.scalecleanup
@@ -515,7 +542,7 @@ def _create_executor_configuration(service_name: str) -> str:
 def _launch_jobs(
     service_name: str,
     jobs: int = 1,
-    single: bool = False,
+    single: bool = True,
     delay: int = 3,
     duration: int = 600,
     label: str = None,
