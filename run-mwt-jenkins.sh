@@ -20,7 +20,7 @@ export STUB_UNIVERSE_URL='https://universe-converter.mesosphere.com/transform?ur
 dcos package repo add --index=0 jenkins-mwt $STUB_UNIVERSE_URL
 
 WORK_DURATION=600
-SINGLE_USE_SLAVE=False
+SINGLE_USE=False
 CREATE_FRAMEWORK=True
 CREATE_JOBS=False
 
