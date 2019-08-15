@@ -36,8 +36,8 @@ def pytest_addoption(parser):
     parser.addoption(
         "--single-use",
         action="store",
-        default=True,
-        type=bool,
+        default="True",
+        type=str,
         help="Use Mesos Single-Use agents",
     )
     parser.addoption(
@@ -104,6 +104,20 @@ def pytest_addoption(parser):
         default="",
         help="list of jenkins masters to delete",
     )
+    parser.addoption(
+        "--create-framework",
+        action="store",
+        default="True",
+        type=str,
+        help="Only create service-accounts and Jenkins frameworks.",
+    )
+    parser.addoption(
+        "--create-jobs",
+        action="store",
+        default="True",
+        type=str,
+        help="Only create jobs on deployed Jenkins frameworks.",
+    )
 
 
 @pytest.fixture
@@ -118,7 +132,7 @@ def job_count(request) -> int:
 
 @pytest.fixture
 def single_use(request) -> bool:
-    return bool(request.config.getoption("--single-use"))
+    return _str2bool(request.config.getoption("--single-use"))
 
 
 @pytest.fixture
@@ -174,3 +188,23 @@ def batch_size(request) -> int:
 @pytest.fixture
 def service_id_list(request) -> str:
     return request.config.getoption("--service-ids")
+
+
+@pytest.fixture
+def create_framework(request) -> bool:
+    return _str2bool(request.config.getoption("--create-framework"))
+
+
+@pytest.fixture
+def create_jobs(request) -> bool:
+    return _str2bool(request.config.getoption("--create-jobs"))
+
+
+def _str2bool(v) -> bool:
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ("yes", "true", "t", "y", "1"):
+        return True
+    elif v.lower() in ("no", "false", "f", "n", "0"):
+        return False
+

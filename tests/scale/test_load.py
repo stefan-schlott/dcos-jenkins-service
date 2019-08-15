@@ -56,7 +56,7 @@ SHARED_ROLE = "jenkins-role"
 DOCKER_IMAGE = "mesosphere/jenkins-dind:scale"
 # initial timeout waiting on deployments
 DEPLOY_TIMEOUT = 30 * 60  # 30 mins
-JOB_RUN_TIMEOUT = 10 * 60  # 10 mins
+JOB_RUN_TIMEOUT = 5 * 60  # 5 mins
 SERVICE_ACCOUNT_TIMEOUT = 15 * 60  # 15 mins
 
 LOCK = Lock()
@@ -238,6 +238,8 @@ def test_scaling_load(
     min_index,
     max_index,
     batch_size,
+    create_framework: bool,
+    create_jobs: bool,
 ) -> None:
 
     """Launch a load test scenario. This does not verify the results
@@ -278,83 +280,79 @@ def test_scaling_load(
         max_index = master_count - 1
 
     masters = ["jenkins{}".format(index) for index in range(min_index, max_index)]
-    initial_masters = set(masters)
+    successful_deployments = set(masters)
 
     # create service accounts in parallel
     sdk_security.install_enterprise_cli()
 
     security_mode = sdk_dcos.get_security_mode()
 
-    log.info("\n\nCreating service accounts for: [{}]\n\n".format(initial_masters))
-    service_account_creation_failures = _create_service_accounts_stage(
-        masters, min_index, max_index, batch_size, security_mode
-    )
-    log.info(
-        "\n\n Service account failures: [{}]\n\n".format(
-            service_account_creation_failures
+    if create_framework:
+        log.info(
+            "\n\nCreating service accounts for: [{}]\n\n".format(successful_deployments)
         )
-    )
-
-    post_sa = initial_masters - service_account_creation_failures
-    log.info("\n\nCreating jenkins frameworks for: [{}]\n\n".format(post_sa))
-
-    install_jenkins_failures = _install_jenkins_stage(
-        [x for x in post_sa],
-        min_index,
-        max_index,
-        batch_size,
-        security_mode,
-        marathon_client,
-        external_volume,
-        mom,
-    )
-    log.info(
-        "\n\nJenkins framework creation failures: [{}]\n\n".format(
-            install_jenkins_failures
+        service_account_creation_failures = _create_service_accounts_stage(
+            masters, min_index, max_index, batch_size, security_mode
         )
-    )
+        log.info(
+            "\n\n Service account failures: [{}]\n\n".format(
+                service_account_creation_failures
+            )
+        )
 
-    post_framework = post_sa - install_jenkins_failures
-    log.info("\n\nCreating jenkins jobs for: [{}]\n\n".format(post_framework))
+        successful_deployments -= service_account_creation_failures
+        log.info(
+            "\n\nCreating jenkins frameworks for: [{}]\n\n".format(
+                successful_deployments
+            )
+        )
 
-    job_creation_failures = _create_jobs_stage(
-        [x for x in post_framework],
-        min_index,
-        max_index,
-        batch_size,
-        security_mode,
-        marathon_client,
-        external_volume,
-        mom,
-        job_count,
-        single_use,
-        run_delay,
-        work_duration,
-        scenario,
-    )
+        install_jenkins_failures = _install_jenkins_stage(
+            [x for x in successful_deployments],
+            min_index,
+            max_index,
+            batch_size,
+            security_mode,
+            marathon_client,
+            external_volume,
+            mom,
+        )
+        log.info(
+            "\n\nJenkins framework creation failures: [{}]\n\n".format(
+                install_jenkins_failures
+            )
+        )
+        successful_deployments -= install_jenkins_failures
 
-    successful_deployments = post_framework - job_creation_failures
+    if create_jobs:
+        log.info(
+            "\n\nCreating jenkins jobs for: [{}]\n\n".format(successful_deployments)
+        )
+
+        job_creation_failures = _create_jobs_stage(
+            [x for x in successful_deployments],
+            min_index,
+            max_index,
+            batch_size,
+            security_mode,
+            marathon_client,
+            external_volume,
+            mom,
+            job_count,
+            single_use,
+            run_delay,
+            work_duration,
+            scenario,
+        )
+        successful_deployments -= job_creation_failures
 
     log.info("\n\nAll masters to deploy: [{}]\n\n".format(",".join(masters)))
-    log.info(
-        "\n\n Service account failures: [{}]\n\n".format(
-            service_account_creation_failures
-        )
-    )
-    log.info(
-        "\n\nJenkins framework creation failures: [{}]\n\n".format(
-            install_jenkins_failures
-        )
-    )
-    log.info(
-        "\n\nJenkins job creation failures: [{}]\n\n".format(job_creation_failures)
-    )
     log.info(
         "\n\nSuccessful Jenkins deployments: [{}]\n\n".format(successful_deployments)
     )
     log.info(
         "\n\nFailed Jenkins deployments: [{}]\n\n".format(
-            initial_masters - successful_deployments
+            set(masters) - successful_deployments
         )
     )
     log.info("Timings: {}".format(json.dumps(TIMINGS)))
