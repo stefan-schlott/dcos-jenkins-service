@@ -85,7 +85,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jenkinsstatsd_mesos_cloud_mesos_provision_scheduler_p99",
+          "expr": "max(jenkinsstatsd_mesos_cloud_mesos_provision_scheduler_p99)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -94,7 +94,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Jenkins Scheduler wait time (total time scheduler waits for offer)",
+      "title": "Jenkins Scheduler max wait time (total time scheduler waits for offer)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -325,7 +325,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jenkinsstatsd_jenkins_job_queuing_duration",
+          "expr": "max(jenkinsstatsd_jenkins_job_queuing_duration_p99)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{dcos_service_name}}",
@@ -335,167 +335,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Job Queuing Duration",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 0,
-        "y": 67
-      },
-      "id": 60,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jenkinsstatsd_jenkins_job_total_duration",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{dcos_service_name}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Job Total Duration",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 0,
-        "y": 67
-      },
-      "id": 50,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jenkinsstatsd_jenkins_job_building_duration",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{dcos_service_name}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Job Building Duration",
+      "title": "Max 99th Percentile Job Queuing Duration",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -566,7 +406,7 @@
     ]
   },
   "timezone": "",
-  "title": "Jenkins: Jobs",
-  "uid": "kZIghMMmz",
+  "title": "Jenkins: Jobs MWT19",
+  "uid": "",
   "version": 5
 }
