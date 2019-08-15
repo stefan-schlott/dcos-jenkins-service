@@ -130,7 +130,7 @@ def _create_service_accounts_stage(
             service_account_threads, timeout=SERVICE_ACCOUNT_TIMEOUT
         )
         current = current + batch_size
-        failure_set.add(thread_failures)
+        failure_set |= thread_failures
     return failure_set
 
 
@@ -172,7 +172,7 @@ def _install_jenkins_stage(
             install_threads, timeout=DEPLOY_TIMEOUT
         )
         current = current + batch_size
-        failure_set.add(thread_failures)
+        failure_set |= thread_failures
     return failure_set
 
 
@@ -218,7 +218,7 @@ def _create_jobs_stage(
             event="createjobs",
         )
         thread_failures = _wait_and_get_failures(job_threads, timeout=JOB_RUN_TIMEOUT)
-        failure_set.add(thread_failures)
+        failure_set |= thread_failures
         current = current + batch_size
     return failure_set
 
@@ -278,18 +278,28 @@ def test_scaling_load(
         max_index = master_count - 1
 
     masters = ["jenkins{}".format(index) for index in range(min_index, max_index)]
+    initial_masters = set(masters)
 
     # create service accounts in parallel
     sdk_security.install_enterprise_cli()
 
     security_mode = sdk_dcos.get_security_mode()
 
+    log.info("\n\nCreating service accounts for: [{}]\n\n".format(initial_masters))
     service_account_creation_failures = _create_service_accounts_stage(
         masters, min_index, max_index, batch_size, security_mode
     )
+    log.info(
+        "\n\n Service account failures: [{}]\n\n".format(
+            service_account_creation_failures
+        )
+    )
+
+    post_sa = initial_masters - service_account_creation_failures
+    log.info("\n\nCreating jenkins frameworks for: [{}]\n\n".format(post_sa))
 
     install_jenkins_failures = _install_jenkins_stage(
-        [x for x in masters if x not in service_account_creation_failures],
+        [x for x in post_sa],
         min_index,
         max_index,
         batch_size,
@@ -298,9 +308,17 @@ def test_scaling_load(
         external_volume,
         mom,
     )
+    log.info(
+        "\n\nJenkins framework creation failures: [{}]\n\n".format(
+            install_jenkins_failures
+        )
+    )
+
+    post_framework = post_sa - install_jenkins_failures
+    log.info("\n\nCreating jenkins jobs for: [{}]\n\n".format(post_framework))
 
     job_creation_failures = _create_jobs_stage(
-        [x for x in masters if x not in install_jenkins_failures],
+        [x for x in post_framework],
         min_index,
         max_index,
         batch_size,
@@ -315,7 +333,7 @@ def test_scaling_load(
         scenario,
     )
 
-    successful_deployments = [x for x in masters if x not in job_creation_failures]
+    successful_deployments = post_framework - job_creation_failures
 
     log.info("\n\nAll masters to deploy: [{}]\n\n".format(",".join(masters)))
     log.info(
@@ -323,18 +341,21 @@ def test_scaling_load(
             service_account_creation_failures
         )
     )
-
     log.info(
         "\n\nJenkins framework creation failures: [{}]\n\n".format(
             install_jenkins_failures
         )
     )
-
     log.info(
         "\n\nJenkins job creation failures: [{}]\n\n".format(job_creation_failures)
     )
     log.info(
         "\n\nSuccessful Jenkins deployments: [{}]\n\n".format(successful_deployments)
+    )
+    log.info(
+        "\n\nFailed Jenkins deployments: [{}]\n\n".format(
+            initial_masters - successful_deployments
+        )
     )
     log.info("Timings: {}".format(json.dumps(TIMINGS)))
 
@@ -484,6 +505,7 @@ def _install_jenkins(service_name, client=None, security=None, **kwargs):
         jenkins.install(
             service_name, client, role=SHARED_ROLE, fn=_wait_for_deployment, **kwargs
         )
+
     except Exception as e:
         log.warning("Error encountered while installing Jenkins: {}".format(e))
         raise e
@@ -638,7 +660,8 @@ def _wait_and_get_failures(thread_list: List[ResultThread], **kwargs) -> Set[str
                 len(run_fail_names), ", ".join(run_fail_names)
             )
         )
-    failure_set = frozenset(timeout_names + run_fail_names)
+    failure_list = timeout_names + run_fail_names
+    failure_set = set(failure_list)
     return failure_set
 
 
