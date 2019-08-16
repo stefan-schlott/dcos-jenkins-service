@@ -1,0 +1,636 @@
+The specified profile (default) was not found in the file /home/kjoshi/.aws/credentials
+Using single profile: 273854932432_Mesosphere-PowerUser
+interactive=false
+headless=false
+package-registry=false
+security=permissive
+enterprise=true
+Setting Gradle cache to /home/kjoshi/mwt-19/pre/dcos-jenkins-service/.gradle_cache
++ export DCOS_ENTERPRISE
++ export PYTHONUNBUFFERED=1
++ PYTHONUNBUFFERED=1
++ export SECURITY
++ export PACKAGE_REGISTRY_ENABLED
++ export PACKAGE_REGISTRY_STUB_URL
++ export DCOS_FILES_PATH
++++ dirname /build-tools/test_runner.sh
+++ cd /build-tools
+++ pwd
++ BUILD_TOOL_DIR=/build-tools
++ REPO_ROOT_DIR=/build
++ SINGLE_FRAMEWORK=True
++ '[' -z jenkins -o x == xTrue -o xjenkins == xall ']'
++ FRAMEWORK_LIST=jenkins
++ echo 'Using FRAMEWORK_LIST:\njenkins'
+Using FRAMEWORK_LIST:\njenkins
++ echo 'PACKAGE_REGISTRY_ENABLED false'
+PACKAGE_REGISTRY_ENABLED false
++ echo 'PACKAGE_REGISTRY_STUB_URL '
+PACKAGE_REGISTRY_STUB_URL 
++ echo 'DCOS_FILES_PATH '
+DCOS_FILES_PATH 
++ '[' -n 'https://universe-converter.mesosphere.com/transform?url=https://infinity-artifacts.s3.amazonaws.com/permanent/jenkins/assets/scale-test-jenkins-2.150.1/stub-universe-jenkins.json' ']'
++ '[' xTrue == xFalse ']'
++ echo 'Using provided STUB_UNIVERSE_URL: https://universe-converter.mesosphere.com/transform?url=https://infinity-artifacts.s3.amazonaws.com/permanent/jenkins/assets/scale-test-jenkins-2.150.1/stub-universe-jenkins.json'
+Using provided STUB_UNIVERSE_URL: https://universe-converter.mesosphere.com/transform?url=https://infinity-artifacts.s3.amazonaws.com/permanent/jenkins/assets/scale-test-jenkins-2.150.1/stub-universe-jenkins.json
++ '[' -z https://mwt19.scaletesting.mesosphe.re ']'
++ [[ xpermissive == x\s\t\r\i\c\t ]]
++ echo 'Configuring dcoscli for cluster: https://mwt19.scaletesting.mesosphe.re'
+Configuring dcoscli for cluster: https://mwt19.scaletesting.mesosphe.re
++ echo '\tDCOS_ENTERPRISE=true'
+\tDCOS_ENTERPRISE=true
++ /build/tools/dcos_login.py
+[2019-08-15 16:55:57,025|__main__|INFO]: No ACS token provided, logging in...
+[2019-08-15 16:55:57,025|__main__|INFO]: logging into https://mwt19.scaletesting.mesosphe.re as dcos-dev
+/usr/local/lib/python3.6/dist-packages/urllib3/connectionpool.py:847: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)
+[2019-08-15 16:55:58,495|__main__|INFO]: Login was successful!
+[2019-08-15 16:55:58,496|dcos.util|INFO]: Creating directory: '/root/.dcos/clusters'
+[2019-08-15 16:55:58,497|__main__|WARNING]: Target cluster has not been setup yet. Performing setup...
+[2019-08-15 16:55:58,497|dcos.util|INFO]: Creating directory: '/root/.dcos/clusters/setup'
+[2019-08-15 16:55:58,510|dcos.config|INFO]: Comparing changes in the configuration...
+[2019-08-15 16:55:58,510|dcos.config|INFO]: Errors before the config command: []
+[2019-08-15 16:55:58,510|dcos.config|INFO]: Errors after the config command: []
+[2019-08-15 16:55:58,512|dcos.config|INFO]: Comparing changes in the configuration...
+[2019-08-15 16:55:58,512|dcos.config|INFO]: Errors before the config command: []
+[2019-08-15 16:55:58,512|dcos.config|INFO]: Errors after the config command: []
+[2019-08-15 16:55:58,514|dcos.config|INFO]: Comparing changes in the configuration...
+[2019-08-15 16:55:58,514|dcos.config|INFO]: Errors before the config command: []
+[2019-08-15 16:55:58,514|dcos.config|INFO]: Errors after the config command: []
+[2019-08-15 16:55:58,517|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/metadata']: {'Accept': 'application/json'}
+[2019-08-15 16:55:59,574|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:55:59 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'openresty'}
+[2019-08-15 16:55:59,575|dcos.util|INFO]: Creating directory: '/root/.dcos/clusters/d85acb99-718e-4b24-a9d0-63a3638bcd90'
+[2019-08-15 16:55:59,579|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/mesos/state-summary']: {'Accept': 'application/json'}
+[2019-08-15 16:56:00,639|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:56:00 GMT', 'Content-Type': 'application/json', 'Content-Length': '4093', 'Connection': 'keep-alive', 'Server': 'openresty', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:56:00,651|dcos.config|INFO]: Comparing changes in the configuration...
+[2019-08-15 16:56:00,652|dcos.config|INFO]: Errors before the config command: []
+[2019-08-15 16:56:00,652|dcos.config|INFO]: Errors after the config command: []
+++ ssh-agent -s
++ eval 'SSH_AUTH_SOCK=/tmp/ssh-dEkFc4vXHORD/agent.12; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=13; export SSH_AGENT_PID;
+echo Agent pid 13;'
+++ SSH_AUTH_SOCK=/tmp/ssh-dEkFc4vXHORD/agent.12
+++ export SSH_AUTH_SOCK
+++ SSH_AGENT_PID=13
+++ export SSH_AGENT_PID
+++ echo Agent pid 13
+Agent pid 13
++ '[' -f /ssh/key ']'
++ ssh-add /ssh/key
+Identity added: /ssh/key (/ssh/key)
++ '[' -f /build/cluster_info.json ']'
++ pytest_args=()
+++ echo '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"'
+++ sed -e 's#.*-k [\'\''"]\([^\'\''"]*\)['\''"].*#\1#'
++ PYTEST_K='--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"'
++ '[' '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"' '!=' '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"' ']'
+++ echo '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"'
+++ sed -e 's#.*-m [\'\''"]\([^\'\''"]*\)['\''"].*#\1#'
++ PYTEST_M=scale
++ '[' scale '!=' '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"' ']'
++ '[' -n scale ']'
++ pytest_args+=(-m "$PYTEST_M")
+++ echo '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True -m "scale"'
+++ sed -e 's#-m [\'\''"]\([^\'\''"]*\)['\''"]##'
++ PYTEST_ARGS='--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True '
++ '[' -n '--jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True ' ']'
++ pytest_args+=($PYTEST_ARGS)
++ '[' -n ']'
++ '[' -d /build/testing ']'
++ export PYTHONPATH=/build/testing
++ PYTHONPATH=/build/testing
++ '[' -d /build/tests ']'
++ FRAMEWORK_TESTS_DIR=/build/tests
+++ date
++ echo 'Starting test for /build/tests with pytest args [-m' scale --jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True '--single-use=True] at Thu' Aug 15 16:56:00 UTC 2019
+Starting test for /build/tests with pytest args [-m scale --jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True] at Thu Aug 15 16:56:00 UTC 2019
++ py.test -vv -s -m scale --jobs=5 --work-duration=3600 --scenario=sleep --min=2000 --max=2001 --batch-size=1 --run-delay=60 --create-framework=True --create-jobs=True --single-use=True /build/tests
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.6.8, pytest-4.1.0, py-1.7.0, pluggy-0.8.1 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /build, inifile:
+plugins: teamcity-messages-1.21, timeout-1.3.3, dcos-test-utils-0.1
+[1mcollecting ... [0m[1mcollected 17 items / 16 deselected                                             [0m
+
+tests/scale/test_load.py::test_scaling_load [2019-08-15 16:56:01,365|dcos.marathon|INFO]: Creating marathon client with: 'https://mwt19.scaletesting.mesosphe.re/service/marathon/'
+[2019-08-15 16:56:01,365|sdk_security|INFO]: Installing DC/OS enterprise CLI
+[2019-08-15 16:56:01,365|sdk_cmd|INFO]: (CLI) dcos security --version
+[2019-08-15 16:56:01,511|sdk_cmd|INFO]: (CLI) dcos package install --yes --cli dcos-enterprise-cli
+[2019-08-15 16:56:29,768|sdk_cmd|INFO]: STDOUT:
+By Deploying, you agree to the Terms and Conditions https://mesosphere.com/catalog-terms-conditions/#certified-services
+Installing CLI subcommand for package [dcos-enterprise-cli] version [1.13-patch.1]
+New commands available: dcos backup, dcos security, dcos license
+[2019-08-15 16:56:29,769|sdk_cmd|INFO]: STDERR:
+Extracting "dcos-core-cli"...
+Warning: The attached cluster is running DC/OS 1.13 but this CLI only supports DC/OS 1.12.
+[2019-08-15 16:56:29,771|sdk_cmd|INFO]: (HTTP GET) /dcos-metadata/bootstrap-config.json
+[2019-08-15 16:56:29,773|dcos.http|INFO]: Sending HTTP ['GET'] to ['https://mwt19.scaletesting.mesosphe.re/dcos-metadata/bootstrap-config.json']: {'Accept': 'application/json'}
+[2019-08-15 16:56:29,776|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:30,653|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /dcos-metadata/bootstrap-config.json HTTP/1.1" 200 852
+[2019-08-15 16:56:30,657|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:56:30 GMT', 'Content-Type': 'application/json', 'Content-Length': '852', 'Connection': 'keep-alive', 'Server': 'openresty', 'Last-Modified': 'Thu, 15 Aug 2019 14:10:21 GMT', 'ETag': '"5d5567cd-354"', 'Accept-Ranges': 'bytes'}
+[2019-08-15 16:56:30,658|dcos.util|DEBUG]: duration: dcos.http._request: 0.88s
+[2019-08-15 16:56:30,658|sdk_cmd|INFO]: Got 200 for GET /dcos-metadata/bootstrap-config.json
+[2019-08-15 16:56:30,659|test_load|INFO]: 
+
+Creating service accounts for: [{'jenkins2000'}]
+
+
+[2019-08-15 16:56:30,659|test_load|INFO]: Re-authenticating current batch load of jenkins0 - jenkins1 to prevent auth-timeouts on scale cluster.
+[2019-08-15 16:56:30,659|tools.dcos_login|INFO]: No ACS token provided, logging in...
+[2019-08-15 16:56:30,660|tools.dcos_login|INFO]: logging into https://mwt19.scaletesting.mesosphe.re as dcos-dev
+[2019-08-15 16:56:30,668|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:32,267|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /acs/api/v1/auth/login HTTP/1.1" 200 445
+[2019-08-15 16:56:32,271|tools.dcos_login|INFO]: Login was successful!
+[2019-08-15 16:56:32,279|tools.dcos_login|INFO]: Attached to already setup cluster: d85acb99-718e-4b24-a9d0-63a3638bcd90
+[2019-08-15 16:56:32,280|test_load|INFO]: Creating service accounts for 'jenkins2000'
+[2019-08-15 16:56:32,281|sdk_security|INFO]: Creating service account for account=jenkins2000-principal secret=jenkins-jenkins2000-secret
+[2019-08-15 16:56:32,281|sdk_security|INFO]: Remove any existing service account and/or secret
+[2019-08-15 16:56:32,282|sdk_cmd|INFO]: (CLI) dcos security org service-accounts delete jenkins2000-principal
+[2019-08-15 16:56:34,448|sdk_cmd|INFO]: STDERR:
+The cluster returned an unexpected response.
+
+The expected HTTP status code was 204.
+The HTTP status code returned was 400.
+
+The response included the following error description: "User with uid `jenkins2000-principal` not known.".
+[2019-08-15 16:56:34,448|sdk_cmd|INFO]: (CLI) dcos security secrets delete jenkins-jenkins2000-secret
+[2019-08-15 16:56:36,587|sdk_cmd|INFO]: STDERR:
+The cluster returned an unexpected response.
+
+The expected HTTP status code was 204.
+The HTTP status code returned was 404.
+
+The response included the following error description: "Secret `jenkins-jenkins2000-secret` does not exists".
+[2019-08-15 16:56:36,587|sdk_security|INFO]: Create keypair
+[2019-08-15 16:56:36,587|sdk_cmd|INFO]: (CLI) dcos security org service-accounts keypair private-key-jenkins2000.pem public-key-jenkins2000.pem
+[2019-08-15 16:56:38,121|sdk_security|INFO]: Create service account
+[2019-08-15 16:56:38,121|sdk_cmd|INFO]: (CLI) dcos security org service-accounts create -p public-key-jenkins2000.pem -d "Service account for integration tests" "jenkins2000-principal"
+[2019-08-15 16:56:40,546|sdk_security|INFO]: Create secret
+[2019-08-15 16:56:40,546|sdk_cmd|INFO]: (CLI) dcos security secrets create-sa-secret --strict private-key-jenkins2000.pem "jenkins2000-principal" "jenkins-jenkins2000-secret"
+[2019-08-15 16:56:42,597|sdk_security|INFO]: Service account created for account=jenkins2000-principal secret=jenkins-jenkins2000-secret jenkins-instance=jenkins2000
+[2019-08-15 16:56:42,597|sdk_security|INFO]: Granting permissions to jenkins2000-principal
+[2019-08-15 16:56:42,597|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:framework:role:*/create (Service jenkins2000-principal may register with the Mesos master with role=*)
+[2019-08-15 16:56:42,599|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:framework:role:*
+[2019-08-15 16:56:42,600|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:framework:role:*']: {'Accept': 'application/json'}
+[2019-08-15 16:56:42,602|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:43,437|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:* HTTP/1.1" 409 139
+[2019-08-15 16:56:43,438|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:43 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '139', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:43,439|dcos.util|DEBUG]: duration: dcos.http._request: 0.84s
+[2019-08-15 16:56:43,439|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:* (args: {'json': {'description': 'Service jenkins2000-principal may register with the Mesos master with role=*'}})
+[2019-08-15 16:56:43,439|sdk_cmd|INFO]: Response content (139 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:framework:role:*` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:43,442|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:framework:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:43,444|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:framework:role:*/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:43,446|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:44,426|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:*/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:44,428|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:44 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:44,428|dcos.util|DEBUG]: duration: dcos.http._request: 0.98s
+[2019-08-15 16:56:44,429|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:44,429|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:task:user:root/create (Service jenkins2000-principal may execute Mesos tasks as user=root)
+[2019-08-15 16:56:44,436|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:task:user:root
+[2019-08-15 16:56:44,442|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:task:user:root']: {'Accept': 'application/json'}
+[2019-08-15 16:56:44,447|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:45,346|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root HTTP/1.1" 409 137
+[2019-08-15 16:56:45,348|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:45 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '137', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:45,349|dcos.util|DEBUG]: duration: dcos.http._request: 0.91s
+[2019-08-15 16:56:45,349|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root (args: {'json': {'description': 'Service jenkins2000-principal may execute Mesos tasks as user=root'}})
+[2019-08-15 16:56:45,349|sdk_cmd|INFO]: Response content (137 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:task:user:root` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:45,355|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:45,362|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:45,366|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:46,267|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:46,269|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:46 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:46,270|dcos.util|DEBUG]: duration: dcos.http._request: 0.91s
+[2019-08-15 16:56:46,270|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:46,271|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:agent:task:user:root/create (Service jenkins2000-principal may execute Mesos tasks as user=root)
+[2019-08-15 16:56:46,277|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:agent:task:user:root
+[2019-08-15 16:56:46,284|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:agent:task:user:root']: {'Accept': 'application/json'}
+[2019-08-15 16:56:46,288|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:47,267|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root HTTP/1.1" 409 136
+[2019-08-15 16:56:47,268|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:47 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '136', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:47,268|dcos.util|DEBUG]: duration: dcos.http._request: 0.98s
+[2019-08-15 16:56:47,268|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root (args: {'json': {'description': 'Service jenkins2000-principal may execute Mesos tasks as user=root'}})
+[2019-08-15 16:56:47,268|sdk_cmd|INFO]: Response content (136 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:agent:task:user:root` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:47,269|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:47,271|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:47,272|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:48,154|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:48,156|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:48 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:48,157|dcos.util|DEBUG]: duration: dcos.http._request: 0.89s
+[2019-08-15 16:56:48,157|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:48,157|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:reservation:role:*/create (Service jenkins2000-principal may reserve Mesos resources with role=*)
+[2019-08-15 16:56:48,163|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:role:*
+[2019-08-15 16:56:48,170|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:role:*']: {'Accept': 'application/json'}
+[2019-08-15 16:56:48,174|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:49,082|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:* HTTP/1.1" 409 141
+[2019-08-15 16:56:49,085|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:48 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '141', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:49,085|dcos.util|DEBUG]: duration: dcos.http._request: 0.92s
+[2019-08-15 16:56:49,086|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:* (args: {'json': {'description': 'Service jenkins2000-principal may reserve Mesos resources with role=*'}})
+[2019-08-15 16:56:49,086|sdk_cmd|INFO]: Response content (141 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:reservation:role:*` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:49,092|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:49,098|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:role:*/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:49,103|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:49,960|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:*/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:49,962|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:49 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:49,963|dcos.util|DEBUG]: duration: dcos.http._request: 0.86s
+[2019-08-15 16:56:49,963|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:49,964|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:reservation:principal:jenkins2000-principal/delete (Service jenkins2000-principal may reserve Mesos resources with principal=jenkins2000-principal)
+[2019-08-15 16:56:49,970|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal
+[2019-08-15 16:56:49,978|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal']: {'Accept': 'application/json'}
+[2019-08-15 16:56:49,982|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:50,809|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal HTTP/1.1" 409 166
+[2019-08-15 16:56:50,811|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:50 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '166', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:50,812|dcos.util|DEBUG]: duration: dcos.http._request: 0.83s
+[2019-08-15 16:56:50,812|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal (args: {'json': {'description': 'Service jenkins2000-principal may reserve Mesos resources with principal=jenkins2000-principal'}})
+[2019-08-15 16:56:50,813|sdk_cmd|INFO]: Response content (166 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:reservation:principal:jenkins2000-principal` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:50,819|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:56:50,825|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete']: {'Accept': 'application/json'}
+[2019-08-15 16:56:50,829|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:51,716|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete HTTP/1.1" 204 0
+[2019-08-15 16:56:51,719|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:51 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:51,719|dcos.util|DEBUG]: duration: dcos.http._request: 0.89s
+[2019-08-15 16:56:51,720|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:56:51,720|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:volume:role:*/create (Service jenkins2000-principal may create Mesos volumes with role=*)
+[2019-08-15 16:56:51,726|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:role:*
+[2019-08-15 16:56:51,732|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:role:*']: {'Accept': 'application/json'}
+[2019-08-15 16:56:51,736|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:52,708|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:* HTTP/1.1" 409 136
+[2019-08-15 16:56:52,711|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:52 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '136', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:52,712|dcos.util|DEBUG]: duration: dcos.http._request: 0.98s
+[2019-08-15 16:56:52,712|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:* (args: {'json': {'description': 'Service jenkins2000-principal may create Mesos volumes with role=*'}})
+[2019-08-15 16:56:52,712|sdk_cmd|INFO]: Response content (136 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:volume:role:*` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:52,718|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:52,724|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:role:*/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:52,728|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:53,537|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:*/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:53,538|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:53 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:53,538|dcos.util|DEBUG]: duration: dcos.http._request: 0.81s
+[2019-08-15 16:56:53,538|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:*/users/jenkins2000-principal/create
+[2019-08-15 16:56:53,538|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:volume:principal:jenkins2000-principal/delete (Service jenkins2000-principal may create Mesos volumes with principal=jenkins2000-principal)
+[2019-08-15 16:56:53,540|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal
+[2019-08-15 16:56:53,541|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal']: {'Accept': 'application/json'}
+[2019-08-15 16:56:53,542|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:54,459|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal HTTP/1.1" 409 161
+[2019-08-15 16:56:54,462|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:54 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '161', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:54,462|dcos.util|DEBUG]: duration: dcos.http._request: 0.92s
+[2019-08-15 16:56:54,463|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal (args: {'json': {'description': 'Service jenkins2000-principal may create Mesos volumes with principal=jenkins2000-principal'}})
+[2019-08-15 16:56:54,463|sdk_cmd|INFO]: Response content (161 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:volume:principal:jenkins2000-principal` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:54,466|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:56:54,468|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete']: {'Accept': 'application/json'}
+[2019-08-15 16:56:54,469|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:55,391|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete HTTP/1.1" 204 0
+[2019-08-15 16:56:55,393|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:55 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:55,394|dcos.util|DEBUG]: duration: dcos.http._request: 0.93s
+[2019-08-15 16:56:55,394|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:56:55,395|sdk_security|INFO]: Permission setup completed for jenkins2000-principal
+[2019-08-15 16:56:55,395|sdk_security|INFO]: Granting permissions to jenkins2000-principal
+[2019-08-15 16:56:55,395|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:framework:role:jenkins-role/create (Service jenkins2000-principal may register with the Mesos master with role=jenkins-role)
+[2019-08-15 16:56:55,401|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role
+[2019-08-15 16:56:55,407|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role']: {'Accept': 'application/json'}
+[2019-08-15 16:56:55,412|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:56,331|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role HTTP/1.1" 409 150
+[2019-08-15 16:56:56,334|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:56 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '150', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:56,334|dcos.util|DEBUG]: duration: dcos.http._request: 0.93s
+[2019-08-15 16:56:56,335|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role (args: {'json': {'description': 'Service jenkins2000-principal may register with the Mesos master with role=jenkins-role'}})
+[2019-08-15 16:56:56,335|sdk_cmd|INFO]: Response content (150 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:framework:role:jenkins-role` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:56,341|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:56:56,349|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:56,355|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:57,314|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:56:57,316|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:56:57 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:56:57,317|dcos.util|DEBUG]: duration: dcos.http._request: 0.97s
+[2019-08-15 16:56:57,317|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:framework:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:56:57,318|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:task:user:root/create (Service jenkins2000-principal may execute Mesos tasks as user=root)
+[2019-08-15 16:56:57,323|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:task:user:root
+[2019-08-15 16:56:57,331|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:task:user:root']: {'Accept': 'application/json'}
+[2019-08-15 16:56:57,337|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:58,350|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root HTTP/1.1" 409 137
+[2019-08-15 16:56:58,353|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:58 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '137', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:58,354|dcos.util|DEBUG]: duration: dcos.http._request: 1.02s
+[2019-08-15 16:56:58,354|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root (args: {'json': {'description': 'Service jenkins2000-principal may execute Mesos tasks as user=root'}})
+[2019-08-15 16:56:58,355|sdk_cmd|INFO]: Response content (137 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:task:user:root` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:56:58,360|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:58,367|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:56:58,371|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:56:59,258|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create HTTP/1.1" 409 95
+[2019-08-15 16:56:59,260|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:56:59 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '95', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:56:59,261|dcos.util|DEBUG]: duration: dcos.http._request: 0.89s
+[2019-08-15 16:56:59,262|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:56:59,262|sdk_cmd|INFO]: Response content (95 bytes):
+{"title": "409 Conflict", "description": "Permission exists.", "code": "ERR_PERMISSION_EXISTS"}
+[2019-08-15 16:56:59,262|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:agent:task:user:root/create (Service jenkins2000-principal may execute Mesos tasks as user=root)
+[2019-08-15 16:56:59,269|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:agent:task:user:root
+[2019-08-15 16:56:59,275|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:agent:task:user:root']: {'Accept': 'application/json'}
+[2019-08-15 16:56:59,279|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:00,575|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root HTTP/1.1" 409 136
+[2019-08-15 16:57:00,577|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:00 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '136', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:00,578|dcos.util|DEBUG]: duration: dcos.http._request: 1.30s
+[2019-08-15 16:57:00,578|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root (args: {'json': {'description': 'Service jenkins2000-principal may execute Mesos tasks as user=root'}})
+[2019-08-15 16:57:00,579|sdk_cmd|INFO]: Response content (136 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:agent:task:user:root` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:57:00,585|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:57:00,591|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:57:00,595|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:01,431|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create HTTP/1.1" 409 95
+[2019-08-15 16:57:01,434|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:01 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '95', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:01,435|dcos.util|DEBUG]: duration: dcos.http._request: 0.84s
+[2019-08-15 16:57:01,435|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:agent:task:user:root/users/jenkins2000-principal/create
+[2019-08-15 16:57:01,435|sdk_cmd|INFO]: Response content (95 bytes):
+{"title": "409 Conflict", "description": "Permission exists.", "code": "ERR_PERMISSION_EXISTS"}
+[2019-08-15 16:57:01,436|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:reservation:role:jenkins-role/create (Service jenkins2000-principal may reserve Mesos resources with role=jenkins-role)
+[2019-08-15 16:57:01,444|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role
+[2019-08-15 16:57:01,452|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role']: {'Accept': 'application/json'}
+[2019-08-15 16:57:01,458|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:02,373|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role HTTP/1.1" 201 0
+[2019-08-15 16:57:02,376|dcos.http|INFO]: Received HTTP response [201]: {'Date': 'Thu, 15 Aug 2019 16:57:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '0', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:57:02,376|dcos.util|DEBUG]: duration: dcos.http._request: 0.92s
+[2019-08-15 16:57:02,377|sdk_cmd|INFO]: Got 201 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role (args: {'json': {'description': 'Service jenkins2000-principal may reserve Mesos resources with role=jenkins-role'}})
+[2019-08-15 16:57:02,383|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:57:02,391|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:57:02,397|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:03,473|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:57:03,475|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:57:03 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:57:03,475|dcos.util|DEBUG]: duration: dcos.http._request: 1.08s
+[2019-08-15 16:57:03,475|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:57:03,476|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:reservation:principal:jenkins2000-principal/delete (Service jenkins2000-principal may reserve Mesos resources with principal=jenkins2000-principal)
+[2019-08-15 16:57:03,479|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal
+[2019-08-15 16:57:03,483|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal']: {'Accept': 'application/json'}
+[2019-08-15 16:57:03,485|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:04,509|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal HTTP/1.1" 409 166
+[2019-08-15 16:57:04,512|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:04 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '166', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:04,513|dcos.util|DEBUG]: duration: dcos.http._request: 1.03s
+[2019-08-15 16:57:04,513|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal (args: {'json': {'description': 'Service jenkins2000-principal may reserve Mesos resources with principal=jenkins2000-principal'}})
+[2019-08-15 16:57:04,513|sdk_cmd|INFO]: Response content (166 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:reservation:principal:jenkins2000-principal` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:57:04,517|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:57:04,521|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete']: {'Accept': 'application/json'}
+[2019-08-15 16:57:04,523|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:05,520|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete HTTP/1.1" 409 95
+[2019-08-15 16:57:05,523|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:05 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '95', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:05,524|dcos.util|DEBUG]: duration: dcos.http._request: 1.00s
+[2019-08-15 16:57:05,524|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:reservation:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:57:05,525|sdk_cmd|INFO]: Response content (95 bytes):
+{"title": "409 Conflict", "description": "Permission exists.", "code": "ERR_PERMISSION_EXISTS"}
+[2019-08-15 16:57:05,525|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:volume:role:jenkins-role/create (Service jenkins2000-principal may create Mesos volumes with role=jenkins-role)
+[2019-08-15 16:57:05,531|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role
+[2019-08-15 16:57:05,537|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role']: {'Accept': 'application/json'}
+[2019-08-15 16:57:05,542|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:06,440|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role HTTP/1.1" 201 0
+[2019-08-15 16:57:06,442|dcos.http|INFO]: Received HTTP response [201]: {'Date': 'Thu, 15 Aug 2019 16:57:06 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '0', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:57:06,443|dcos.util|DEBUG]: duration: dcos.http._request: 0.91s
+[2019-08-15 16:57:06,443|sdk_cmd|INFO]: Got 201 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role (args: {'json': {'description': 'Service jenkins2000-principal may create Mesos volumes with role=jenkins-role'}})
+[2019-08-15 16:57:06,446|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:57:06,448|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role/users/jenkins2000-principal/create']: {'Accept': 'application/json'}
+[2019-08-15 16:57:06,449|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:07,361|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role/users/jenkins2000-principal/create HTTP/1.1" 204 0
+[2019-08-15 16:57:07,364|dcos.http|INFO]: Received HTTP response [204]: {'Date': 'Thu, 15 Aug 2019 16:57:07 GMT', 'Connection': 'keep-alive', 'Server': 'openresty', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0'}
+[2019-08-15 16:57:07,365|dcos.util|DEBUG]: duration: dcos.http._request: 0.92s
+[2019-08-15 16:57:07,365|sdk_cmd|INFO]: Got 204 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:role:jenkins-role/users/jenkins2000-principal/create
+[2019-08-15 16:57:07,366|sdk_security|INFO]: Granting permission to jenkins2000-principal for dcos:mesos:master:volume:principal:jenkins2000-principal/delete (Service jenkins2000-principal may create Mesos volumes with principal=jenkins2000-principal)
+[2019-08-15 16:57:07,372|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal
+[2019-08-15 16:57:07,380|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal']: {'Accept': 'application/json'}
+[2019-08-15 16:57:07,385|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:08,486|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal HTTP/1.1" 409 161
+[2019-08-15 16:57:08,488|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:08 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '161', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:08,489|dcos.util|DEBUG]: duration: dcos.http._request: 1.11s
+[2019-08-15 16:57:08,489|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal (args: {'json': {'description': 'Service jenkins2000-principal may create Mesos volumes with principal=jenkins2000-principal'}})
+[2019-08-15 16:57:08,490|sdk_cmd|INFO]: Response content (161 bytes):
+{"title": "409 Conflict", "description": "ACL for resource with id `dcos:mesos:master:volume:principal:jenkins2000-principal` exists.", "code": "ERR_ACL_EXISTS"}
+[2019-08-15 16:57:08,492|sdk_cmd|INFO]: (HTTP PUT) /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:57:08,494|dcos.http|INFO]: Sending HTTP ['PUT'] to ['https://mwt19.scaletesting.mesosphe.re/acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete']: {'Accept': 'application/json'}
+[2019-08-15 16:57:08,496|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:09,307|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete HTTP/1.1" 409 95
+[2019-08-15 16:57:09,309|dcos.http|INFO]: Received HTTP response [409]: {'Date': 'Thu, 15 Aug 2019 16:57:09 GMT', 'Content-Type': 'application/json; charset=UTF-8', 'Content-Length': '95', 'Connection': 'keep-alive', 'Server': 'openresty', 'vary': 'Accept'}
+[2019-08-15 16:57:09,310|dcos.util|DEBUG]: duration: dcos.http._request: 0.82s
+[2019-08-15 16:57:09,310|sdk_cmd|INFO]: Got 409 for PUT /acs/api/v1/acls/dcos:mesos:master:volume:principal:jenkins2000-principal/users/jenkins2000-principal/delete
+[2019-08-15 16:57:09,310|sdk_cmd|INFO]: Response content (95 bytes):
+{"title": "409 Conflict", "description": "Permission exists.", "code": "ERR_PERMISSION_EXISTS"}
+[2019-08-15 16:57:09,311|sdk_security|INFO]: Permission setup completed for jenkins2000-principal
+[2019-08-15 16:57:09,312|test_load|INFO]: 
+
+ Service account failures: [set()]
+
+
+[2019-08-15 16:57:09,312|test_load|INFO]: 
+
+Creating jenkins frameworks for: [{'jenkins2000'}]
+
+
+[2019-08-15 16:57:09,313|test_load|INFO]: Re-authenticating current batch load of jenkins0 - jenkins1 to prevent auth-timeouts on scale cluster.
+[2019-08-15 16:57:09,313|tools.dcos_login|INFO]: No ACS token provided, logging in...
+[2019-08-15 16:57:09,314|tools.dcos_login|INFO]: logging into https://mwt19.scaletesting.mesosphe.re as dcos-dev
+[2019-08-15 16:57:09,318|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:10,735|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /acs/api/v1/auth/login HTTP/1.1" 200 445
+[2019-08-15 16:57:10,739|tools.dcos_login|INFO]: Login was successful!
+[2019-08-15 16:57:10,746|tools.dcos_login|INFO]: Attached to already setup cluster: d85acb99-718e-4b24-a9d0-63a3638bcd90
+[2019-08-15 16:57:10,747|test_load|INFO]: Installing jenkins 'jenkins2000'
+[2019-08-15 16:57:10,756|dcos.http|INFO]: Sending HTTP ['post'] to ['https://mwt19.scaletesting.mesosphe.re/package/describe']: {'Content-Type': 'application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1', 'Accept': 'application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3'}
+[2019-08-15 16:57:10,759|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:14,381|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /package/describe HTTP/1.1" 200 13457
+[2019-08-15 16:57:14,543|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:57:14 GMT', 'Content-Type': 'application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3', 'Content-Length': '13457', 'Connection': 'keep-alive', 'Server': 'openresty'}
+[2019-08-15 16:57:14,543|dcos.util|DEBUG]: duration: dcos.http._request: 3.79s
+[2019-08-15 16:57:14,550|dcos.http|INFO]: Sending HTTP ['post'] to ['https://mwt19.scaletesting.mesosphe.re/package/render']: {'Content-Type': 'application/vnd.dcos.package.render-request+json;charset=utf-8;version=v1', 'Accept': 'application/vnd.dcos.package.render-response+json;charset=utf-8;version=v1'}
+[2019-08-15 16:57:14,555|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:18,430|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /package/render HTTP/1.1" 200 11929
+[2019-08-15 16:57:18,432|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:57:18 GMT', 'Content-Type': 'application/vnd.dcos.package.render-response+json;charset=utf-8;version=v1', 'Content-Length': '11929', 'Connection': 'keep-alive', 'Server': 'openresty'}
+[2019-08-15 16:57:18,433|dcos.util|DEBUG]: duration: dcos.http._request: 3.88s
+[2019-08-15 16:57:18,439|dcos.http|INFO]: Sending HTTP ['post'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/apps']: {'Accept': 'application/json'}
+[2019-08-15 16:57:18,444|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:19,474|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /service/marathon/v2/apps HTTP/1.1" 201 None
+[2019-08-15 16:57:19,649|dcos.http|INFO]: Received HTTP response [201]: {'Date': 'Thu, 15 Aug 2019 16:57:19 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Location': '/service/marathon/jenkins2000', 'Marathon-Deployment-Id': '2dc42ce7-78a9-4118-919d-7c29358522a0'}
+[2019-08-15 16:57:19,650|dcos.util|DEBUG]: duration: dcos.http._request: 1.21s
+[2019-08-15 16:57:19,657|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:57:19,661|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:20,652|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:57:20,655|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:57:20 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:57:20,656|dcos.util|DEBUG]: duration: dcos.http._request: 1.00s
+》[1.0s/15m] spinning...
+[2019-08-15 16:57:40,677|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:57:40,683|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:57:41,717|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:57:41,720|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:57:41 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:57:41,720|dcos.util|DEBUG]: duration: dcos.http._request: 1.04s
+》[22.1s/15m] spinning...
+[2019-08-15 16:58:01,739|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:58:01,743|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:58:02,650|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:58:02,651|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:58:02 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:58:02,652|dcos.util|DEBUG]: duration: dcos.http._request: 0.91s
+》[43.0s/15m] spinning...
+[2019-08-15 16:58:22,659|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:58:22,663|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:58:23,548|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:58:23,550|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:58:23 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:58:23,551|dcos.util|DEBUG]: duration: dcos.http._request: 0.89s
+》[1m3.9s/15m] spinning...
+[2019-08-15 16:58:43,566|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:58:43,568|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:58:44,471|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:58:44,471|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:58:44 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:58:44,472|dcos.util|DEBUG]: duration: dcos.http._request: 0.91s
+》[1m24.8s/15m] spinning...
+[2019-08-15 16:59:04,489|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:59:04,491|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:59:05,307|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:59:05,308|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:59:05 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:59:05,308|dcos.util|DEBUG]: duration: dcos.http._request: 0.82s
+》[1m45.7s/15m] spinning...
+[2019-08-15 16:59:25,316|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:59:25,317|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:59:26,471|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:59:26,474|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:59:26 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:59:26,474|dcos.util|DEBUG]: duration: dcos.http._request: 1.16s
+》[2m6.8s/15m] spinning...
+[2019-08-15 16:59:46,502|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 16:59:46,507|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 16:59:47,524|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 228
+[2019-08-15 16:59:47,527|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 16:59:47 GMT', 'Content-Type': 'application/json', 'Content-Length': '228', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip'}
+[2019-08-15 16:59:47,528|dcos.util|DEBUG]: duration: dcos.http._request: 1.03s
+》[2m27.9s/15m] spinning...
+[2019-08-15 17:00:07,549|dcos.http|INFO]: Sending HTTP ['get'] to ['https://mwt19.scaletesting.mesosphe.re/service/marathon/v2/deployments']: {'Accept': 'application/json'}
+[2019-08-15 17:00:07,550|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 17:00:08,507|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "GET /service/marathon/v2/deployments HTTP/1.1" 200 2
+[2019-08-15 17:00:08,510|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 17:00:08 GMT', 'Content-Type': 'application/json', 'Content-Length': '2', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Marathon-Leader': 'https://172.31.8.212:8443', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Vary': 'Accept-Encoding, User-Agent'}
+[2019-08-15 17:00:08,510|dcos.util|DEBUG]: duration: dcos.http._request: 0.96s
+[2019-08-15 17:00:08,512|test_load|INFO]: 
+
+Jenkins framework creation failures: [set()]
+
+
+[2019-08-15 17:00:08,512|test_load|INFO]: 
+
+Creating jenkins jobs for: [{'jenkins2000'}]
+
+
+[2019-08-15 17:00:08,512|test_load|INFO]: Re-authenticating current batch load of jenkins0 - jenkins1 to prevent auth-timeouts on scale cluster.
+[2019-08-15 17:00:08,513|tools.dcos_login|INFO]: No ACS token provided, logging in...
+[2019-08-15 17:00:08,513|tools.dcos_login|INFO]: logging into https://mwt19.scaletesting.mesosphe.re as dcos-dev
+[2019-08-15 17:00:08,518|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 17:00:10,259|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /acs/api/v1/auth/login HTTP/1.1" 200 445
+[2019-08-15 17:00:10,265|tools.dcos_login|INFO]: Login was successful!
+[2019-08-15 17:00:10,270|tools.dcos_login|INFO]: Attached to already setup cluster: d85acb99-718e-4b24-a9d0-63a3638bcd90
+[2019-08-15 17:00:10,270|jenkins_remote_access|INFO]: 
+Making request : ========
+
+import org.jenkinsci.plugins.mesos.MesosCloud;
+import org.jenkinsci.plugins.mesos.MesosSlaveInfo;
+import org.apache.mesos.Protos;
+import hudson.slaves.NodeProperty;
+import jenkins.model.*
+import org.jenkinsci.plugins.mesos.MesosSlaveInfo.URI;
+import hudson.tasks.*;
+import com.cloudbees.hudson.plugins.folder.Folder;
+
+def containerInfo = new MesosSlaveInfo.ContainerInfo(
+                "DOCKER",
+                "mesosphere/jenkins-dind:scale",
+                true,
+                false,
+                false,
+                true,
+                "wrapper.sh",
+                new LinkedList<MesosSlaveInfo.Volume>(),
+                new LinkedList<MesosSlaveInfo.Parameter>(),
+                Protos.ContainerInfo.DockerInfo.Network.BRIDGE.name(),
+                new LinkedList<MesosSlaveInfo.PortMapping>(),
+                new LinkedList<MesosSlaveInfo.NetworkInfo>()
+)
+
+def additionalURIs = new LinkedList<URI>()
+additionalURIs.add(new URI("file:///etc/docker/docker.tar.gz", false, true))
+
+def mesosSlaveInfo = new MesosSlaveInfo(
+        "mesos",
+        Node.Mode.NORMAL,
+        "0.1",
+        "256",
+        "1",
+        "1",
+        "0.3",
+        "0.0",
+        "1800",
+        "jenkins",
+        "1",
+        "",
+        "-Xms16m -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true",
+        "-noReconnect",
+        "false",
+        containerInfo,
+        new LinkedList<URI>(),
+        new LinkedList<? extends NodeProperty<?>>()
+)
+
+MesosCloud cloud = MesosCloud.get();
+cloud.getSlaveInfos().add(mesosSlaveInfo)
+cloud.getSlaveInfos().each {
+        t ->
+            println("Label : " + t.getLabelString())
+}
+
+========
+
+[2019-08-15 17:00:10,274|sdk_cmd|INFO]: (HTTP POST) /service/jenkins2000/scriptText
+[2019-08-15 17:00:10,277|dcos.http|INFO]: Sending HTTP ['POST'] to ['https://mwt19.scaletesting.mesosphe.re/service/jenkins2000/scriptText']: {'Accept': 'application/json'}
+[2019-08-15 17:00:10,280|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 17:00:15,488|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /service/jenkins2000/scriptText HTTP/1.1" 200 109
+[2019-08-15 17:00:15,491|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 17:00:15 GMT', 'Content-Type': 'text/plain;charset=utf-8', 'Content-Length': '109', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Content-Type-Options': 'nosniff', 'Content-Encoding': 'gzip'}
+[2019-08-15 17:00:15,491|dcos.util|DEBUG]: duration: dcos.http._request: 5.21s
+[2019-08-15 17:00:15,492|sdk_cmd|INFO]: Got 200 for POST /service/jenkins2000/scriptText (args: ['data'])
+[2019-08-15 17:00:15,506|sdk_cmd|INFO]: (HTTP POST) /service/jenkins2000/createItem?name=generator-job
+[2019-08-15 17:00:15,513|dcos.http|INFO]: Sending HTTP ['POST'] to ['https://mwt19.scaletesting.mesosphe.re/service/jenkins2000/createItem?name=generator-job']: {'Content-Type': 'application/xml'}
+[2019-08-15 17:00:15,517|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 17:00:16,802|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /service/jenkins2000/createItem?name=generator-job HTTP/1.1" 200 None
+[2019-08-15 17:00:16,804|dcos.http|INFO]: Received HTTP response [200]: {'Date': 'Thu, 15 Aug 2019 17:00:16 GMT', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Content-Type-Options': 'nosniff'}
+[2019-08-15 17:00:16,805|dcos.util|DEBUG]: duration: dcos.http._request: 1.29s
+[2019-08-15 17:00:16,805|sdk_cmd|INFO]: Got 200 for POST /service/jenkins2000/createItem?name=generator-job (args: {'data': b'<?xml version=\'1.0\' encoding=\'utf8\'?>\n<project>\n    <actions />\n    <description />\n    <keepDependencies>false</keepDependencies>\n    <properties>\n        <hudson.model.ParametersDefinitionProperty>\n            <parameterDefinitions>\n                <hudson.model.StringParameterDefinition>\n                    <name>SINGLE_USE</name>\n                    <description>Percentage of jobs that should be Single Use mesos agent.</description>\n                    <defaultValue>100</defaultValue>\n                    <trim>true</trim>\n                </hudson.model.StringParameterDefinition>\n                <hudson.model.StringParameterDefinition>\n                    <name>AGENT_LABEL</name>\n                    <description>Job runs restricted to this label.</description>\n                    <defaultValue />\n                    <trim>true</trim>\n                </hudson.model.StringParameterDefinition>\n                <hudson.model.StringParameterDefinition>\n                    <name>JOBCOUNT</name>\n                    <description>The number of jobs to create and manage.</description>\n                    <defaultValue>5</defaultValue>\n                    <trim>true</trim>\n                </hudson.model.StringParameterDefinition>\n                <hudson.model.StringParameterDefinition>\n                    <name>EVERY_XMIN</name>\n                    <description>Every X minutes run this job.</description>\n                    <defaultValue>5</defaultValue>\n                    <trim>false</trim>\n                </hudson.model.StringParameterDefinition>\n                <hudson.model.StringParameterDefinition>\n                    <name>SLEEP_DURATION</name>\n                    <description>Job sleeps for this many seconds.</description>\n                    <defaultValue>600</defaultValue>\n                    <trim>false</trim>\n                </hudson.model.StringParameterDefinition>\n                <hudson.model.StringParameterDefinition>\n                    <name>SCENARIO</name>\n                    <description>Test scenario to run.</description>\n                    <defaultValue>sleep</defaultValue>\n                    <trim>true</trim>\n                </hudson.model.StringParameterDefinition>\n            </parameterDefinitions>\n        </hudson.model.ParametersDefinitionProperty>\n    </properties>\n    <scm class="hudson.scm.NullSCM" />\n    <canRoam>true</canRoam>\n    <disabled>false</disabled>\n    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>\n    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>\n    <triggers />\n    <concurrentBuild>false</concurrentBuild>\n    <builders>\n        <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.69">\n            <scriptText>def singleP = "${SINGLE_USE}" as Integer\n                def jobCount = "${JOBCOUNT}" as Integer\n                def agentLabel = "${AGENT_LABEL}" as String\n                def sleepDur = "${SLEEP_DURATION}" as Integer\n                def everyMin = "${EVERY_XMIN}" as Integer\n\n                Random random = new Random()\n\n                (1..jobCount).each { c -&gt;\n                def jobName = "test-job-${c}"\n\n                def j = job(jobName) {\n                if (agentLabel) {\n                label(agentLabel)\n                }\n\n                triggers {\n                cron("*/${EVERY_XMIN} * * * *")\n                }\n\n                wrappers {\n                    if (singleP == 100 || (singleP != 0 &amp;&amp; Math.abs(random.nextInt() % 100) + 1 &lt;= singleP)) {\n                        configure { node -&gt;\n                        node / \'buildWrappers\' / \'org.jenkinsci.plugins.mesos.MesosSingleUseSlave\'()\n                        }\n                    }\n                }\n\n                if (SCENARIO == "buildmarathon") {\n                    scm {\n                        git {\n                            remote {\n                                name(\'origin\')\n                                url(\'https://github.com/mesosphere/marathon.git\')\n                            }\n                            branches(\'v1.6.352\')\n                        }\n                    }\n                }\n\n                steps {\n                    if (SCENARIO == "buildmarathon") {\n                       shell(\' export SBT_OPTS="-Xmx750M -Xms750M -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M"; curl -LO https://piccolo.link/sbt-1.1.2.tgz; tar -zxf sbt*.tgz; sbt/bin/sbt compile; \')\n                    } else {\n                        shell("echo \'hello, world\'; sleep ${sleepDur}")\n                    }\n                }\n\n                }\n                queue(j)\n\n                }\n            </scriptText>\n            <usingScriptText>true</usingScriptText>\n            <sandbox>false</sandbox>\n            <ignoreExisting>false</ignoreExisting>\n            <ignoreMissingFiles>false</ignoreMissingFiles>\n            <failOnMissingPlugin>false</failOnMissingPlugin>\n            <unstableOnDeprecation>false</unstableOnDeprecation>\n            <removedJobAction>DELETE</removedJobAction>\n            <removedViewAction>DELETE</removedViewAction>\n            <removedConfigFilesAction>DELETE</removedConfigFilesAction>\n            <lookupStrategy>JENKINS_ROOT</lookupStrategy>\n        </javaposse.jobdsl.plugin.ExecuteDslScripts>\n    </builders>\n    <publishers />\n    <buildWrappers />\n</project>', 'headers': {'Content-Type': 'application/xml'}})
+[2019-08-15 17:00:16,806|test_load|INFO]: Launching 5 jobs every 60 minutes with single-use (True).
+[2019-08-15 17:00:16,808|sdk_cmd|INFO]: (HTTP POST) /service/jenkins2000/job/generator-job/buildWithParameters?JOBCOUNT=5&AGENT_LABEL=mesos&SINGLE_USE=100&EVERY_XMIN=60&SLEEP_DURATION=3600&SCENARIO=sleep
+[2019-08-15 17:00:16,810|dcos.http|INFO]: Sending HTTP ['POST'] to ['https://mwt19.scaletesting.mesosphe.re/service/jenkins2000/job/generator-job/buildWithParameters?JOBCOUNT=5&AGENT_LABEL=mesos&SINGLE_USE=100&EVERY_XMIN=60&SLEEP_DURATION=3600&SCENARIO=sleep']: {'Accept': 'application/json'}
+[2019-08-15 17:00:16,811|urllib3.connectionpool|DEBUG]: Starting new HTTPS connection (1): mwt19.scaletesting.mesosphe.re:443
+[2019-08-15 17:00:18,236|urllib3.connectionpool|DEBUG]: https://mwt19.scaletesting.mesosphe.re:443 "POST /service/jenkins2000/job/generator-job/buildWithParameters?JOBCOUNT=5&AGENT_LABEL=mesos&SINGLE_USE=100&EVERY_XMIN=60&SLEEP_DURATION=3600&SCENARIO=sleep HTTP/1.1" 201 None
+[2019-08-15 17:00:18,239|dcos.http|INFO]: Received HTTP response [201]: {'Date': 'Thu, 15 Aug 2019 17:00:18 GMT', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'openresty', 'X-Content-Type-Options': 'nosniff', 'Location': 'https://mwt19.scaletesting.mesosphe.re/service/jenkins2000/queue/item/1/'}
+[2019-08-15 17:00:18,240|dcos.util|DEBUG]: duration: dcos.http._request: 1.43s
+[2019-08-15 17:00:18,240|sdk_cmd|INFO]: Got 201 for POST /service/jenkins2000/job/generator-job/buildWithParameters?JOBCOUNT=5&AGENT_LABEL=mesos&SINGLE_USE=100&EVERY_XMIN=60&SLEEP_DURATION=3600&SCENARIO=sleep
+[2019-08-15 17:00:18,241|test_load|INFO]: 
+
+All masters to deploy: [jenkins2000]
+
+
+[2019-08-15 17:00:18,241|test_load|INFO]: 
+
+Successful Jenkins deployments: [{'jenkins2000'}]
+
+
+[2019-08-15 17:00:18,242|test_load|INFO]: 
+
+Failed Jenkins deployments: [set()]
+
+
+[2019-08-15 17:00:18,242|test_load|INFO]: Timings: {"deployments": {"jenkins2000": 177.76470947265625}, "serviceaccounts": {"jenkins2000": 37.031020641326904}, "createjobs": {"jenkins2000": 7.970588207244873}}
+[32mPASSED[0m
+
+[32m[1m================== 1 passed, 16 deselected in 257.03 seconds ===================[0m
++ exit_code=0
+++ date
++ echo 'Finished test for /build/tests at Thu' Aug 15 17:00:18 UTC 2019
+Finished test for /build/tests at Thu Aug 15 17:00:18 UTC 2019
++ for framework in $FRAMEWORK_LIST
++ echo 'Checking framework jenkins'
+Checking framework jenkins
++ FRAMEWORK_TESTS_DIR=/build/frameworks/jenkins/tests
++ '[' '!' -d /build/frameworks/jenkins/tests ']'
++ echo 'No tests found for jenkins at /build/frameworks/jenkins/tests'
+No tests found for jenkins at /build/frameworks/jenkins/tests
+++ date
++ echo 'Finished integration tests at Thu' Aug 15 17:00:18 UTC 2019
+Finished integration tests at Thu Aug 15 17:00:18 UTC 2019
++ '[' -n '' ']'
++ exit 0

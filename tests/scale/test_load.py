@@ -56,8 +56,8 @@ SHARED_ROLE = "jenkins-role"
 DOCKER_IMAGE = "mesosphere/jenkins-dind:scale"
 # initial timeout waiting on deployments
 DEPLOY_TIMEOUT = 30 * 60  # 30 mins
-JOB_RUN_TIMEOUT = 5 * 60  # 5 mins
-SERVICE_ACCOUNT_TIMEOUT = 15 * 60  # 15 mins
+JOB_RUN_TIMEOUT = 2 * 60  # 3 mins
+SERVICE_ACCOUNT_TIMEOUT = 30 * 60  # 30 mins
 
 LOCK = Lock()
 
