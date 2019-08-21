@@ -57,7 +57,7 @@ COPY conf/nginx/nginx.conf /var/nginx/nginx.conf
 # jenkins setup
 # TODO: re-enable when Mesos plugin will be used again
 #COPY conf/jenkins/config.xml "${JENKINS_STAGING}/config.xml"
-#COPY conf/jenkins/jenkins.model.JenkinsLocationConfiguration.xml "${JENKINS_STAGING}/jenkins.model.JenkinsLocationConfiguration.xml"
+COPY conf/jenkins/jenkins.model.JenkinsLocationConfiguration.xml "${JENKINS_STAGING}/jenkins.model.JenkinsLocationConfiguration.xml"
 #COPY conf/jenkins/nodeMonitors.xml "${JENKINS_STAGING}/nodeMonitors.xml"
 #COPY scripts/init.groovy.d/mesos-auth.groovy "${JENKINS_STAGING}/init.groovy.d/mesos-auth.groovy"
 
