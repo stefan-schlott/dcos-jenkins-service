@@ -61,9 +61,9 @@ COPY conf/jenkins/nodeMonitors.xml "${JENKINS_STAGING}/nodeMonitors.xml"
 COPY scripts/init.groovy.d/mesos-auth.groovy "${JENKINS_STAGING}/init.groovy.d/mesos-auth.groovy"
 
 # add plugins
-# COPY plugins-minimal.conf /tmp/plugins.conf
-# RUN sed -i "s/\${BLUEOCEAN_VERSION}/${BLUEOCEAN_VERSION}/g" /tmp/plugins.conf
-# RUN /usr/local/bin/install-plugins.sh < /tmp/plugins.conf
+COPY plugins-minimal.conf /tmp/plugins.conf
+RUN sed -i "s/\${BLUEOCEAN_VERSION}/${BLUEOCEAN_VERSION}/g" /tmp/plugins.conf
+RUN /usr/local/bin/install-plugins.sh < /tmp/plugins.conf
 
 # add mesos plugin
 ADD https://infinity-artifacts.s3.amazonaws.com/mesos-jenkins/mesos.hpi-${MESOS_PLUG_HASH} "${JENKINS_STAGING}/plugins/mesos.hpi"
