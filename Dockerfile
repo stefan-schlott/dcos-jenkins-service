@@ -1,5 +1,6 @@
 # version from https://jenkins.io/changelog-stable/
-FROM jenkins/jenkins:2.150.3
+#FROM jenkins/jenkins:2.150.3
+FROM jenkins/jenkins:2.176.2
 WORKDIR /tmp
 
 # Environment variables used throughout this Dockerfile
