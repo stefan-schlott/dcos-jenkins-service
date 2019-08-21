@@ -129,14 +129,14 @@ def main():
         'JENKINS_ROOT_URL',
         mesos_dns_taskname(jenkins_framework_name, marathon_name, marathon_nginx_port))
 
-    populate_jenkins_config_xml(
-        os.path.join(jenkins_home_dir, 'config.xml'),
-        mesos_master,
-        jenkins_framework_name,
-        marathon_nginx_port,
-        jenkins_agent_role,
-        jenkins_agent_user,
-        marathon_name)
+    # populate_jenkins_config_xml(
+    #     os.path.join(jenkins_home_dir, 'config.xml'),
+    #     mesos_master,
+    #     jenkins_framework_name,
+    #     marathon_nginx_port,
+    #     jenkins_agent_role,
+    #     jenkins_agent_user,
+    #     marathon_name)
 
     populate_jenkins_location_config(os.path.join(
         jenkins_home_dir, 'jenkins.model.JenkinsLocationConfiguration.xml'),
