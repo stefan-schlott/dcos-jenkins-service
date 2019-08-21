@@ -19,12 +19,10 @@ ARG MESOS_PLUG_HASH=347c1ac133dc0cb6282a0dde820acd5b4eb21133
 ARG PROMETHEUS_PLUG_HASH=a347bf2c63efe59134c15b8ef83a4a1f627e3b5d
 ARG STATSD_PLUG_HASH=929d4a6cb3d3ce5f1e03af73075b13687d4879c8
 ARG JENKINS_DCOS_HOME=/var/jenkinsdcos_home
-ARG user=root
-ARG uid=0
-ARG gid=0
-#ARG user=nobody
-#ARG uid=99
-#ARG gid=99
+ARG user=nobody
+ARG uid=99
+ARG gid=99
+
 
 ENV JENKINS_HOME $JENKINS_DCOS_HOME
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
@@ -91,7 +89,9 @@ RUN chmod -R ugo+rw "$JENKINS_HOME" "${JENKINS_FOLDER}" \
     && chmod -R ugo+rw /var/lib/nginx/ /var/nginx/ /var/log/nginx \
     && chmod ugo+rx /usr/local/jenkins/bin/*
 
-USER ${user}
+# TODO change back to set user
+#USER ${user}
+USER root
 
 # disable first-run wizard
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
